@@ -211,7 +211,7 @@ function Todo() {
 
   return (
     <>
-      <div className="w-[90%] m-auto mt-[50px]">
+      <div className="w-[90%] m-auto mt-[50px]" data-aos='fade-down'>
         <div className="flex justify-between items-center">
           <h1 className="text-[25px] font-[700]">User List</h1>
           <div className="flex justify-around items-center gap-10">
@@ -279,25 +279,25 @@ function Todo() {
             <Button
               variant="contained"
               size="large"
-              style={{ height: 55 }}
+              style={{ height: 58 }}
               onClick={() => searchUser(search)}
             >
               Submit
             </Button>
           </div>
         </div>
-        <div data-aos="fade-down-right" className="mt-[30px]">
+        <div className="mt-[30px]">
           <TableContainer component={Paper} className="dark:bg-[#07072f] dark:text-[#eeeeee]">
             <Table sx={{ minWidth: 700 }} aria-label="customized table" className="dark:text-[#eeeeee]">
               <TableHead>
                 <TableRow>
-                  <StyledTableCell>Name</StyledTableCell>
-                  <StyledTableCell align="center">Actions</StyledTableCell>
+                  <StyledTableCell><span className="dark:text-[#eeeeee]">Name</span></StyledTableCell>
+                  <StyledTableCell align="center"><span className="dark:text-[#eee]">Actions</span></StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {data.map((el) => (
-                  <StyledTableRow key={el.id}>
+                  <StyledTableRow data-aos="fade-down" data-aos-duration="1000" key={el.id}>
                     <StyledTableCell component="th" scope="row">
                       <div className="flex gap-3 items-center">
                         <Checkbox
@@ -332,7 +332,7 @@ function Todo() {
                       </div>
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      <div className="flex justify-center gap-10 items-center">
+                      <div className="flex justify-center gap-5 items-center">
                         <IconButton variant="contained" color="error" onClick={() => del(el.id)}>
                           <Delete />
                         </IconButton>
@@ -353,7 +353,7 @@ function Todo() {
                           </Button>
                         </form>
                         <IconButton
-                          variant="action" 
+                          color="primary" 
                           onClick={() => {
                               handleOpen2(),
                               setEditDesc(el.description),
