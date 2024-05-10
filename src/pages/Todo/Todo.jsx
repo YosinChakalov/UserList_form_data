@@ -9,7 +9,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button, Checkbox } from "@mui/material";
+import { Button, Checkbox, IconButton } from "@mui/material";
 import { Add, Delete, Edit } from "@mui/icons-material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -314,7 +314,9 @@ function Todo() {
                                 alt=""
                                 className="w-[50px] h-[50px] rounded-[50%]"
                               />
+                              <IconButton>
                               <Delete onClick={()=> delImg(el.id)} color="error"/>
+                              </IconButton>
                               </>
                             );
                           })}
@@ -331,9 +333,9 @@ function Todo() {
                     </StyledTableCell>
                     <StyledTableCell align="center">
                       <div className="flex justify-center gap-10 items-center">
-                        <Button variant="contained" onClick={() => del(el.id)}>
+                        <IconButton variant="contained" color="error" onClick={() => del(el.id)}>
                           <Delete />
-                        </Button>
+                        </IconButton>
                         <form action="" onSubmit={postImg}>
                           <Input
                             size="medium"
@@ -350,17 +352,18 @@ function Todo() {
                             Submit
                           </Button>
                         </form>
-                        <Button
-                          variant="contained"
+                        <IconButton
+                          variant="action" 
                           onClick={() => {
                               handleOpen2(),
                               setEditDesc(el.description),
                               setEditName(el.name),
                               setIdx(el.id);
                           }}
+                          
                         >
                           <Edit />
-                        </Button>
+                        </IconButton>
                       </div>
                     </StyledTableCell>
                   </StyledTableRow>
@@ -383,7 +386,7 @@ function Todo() {
                   <Input style={{height: 45, marginBottom: 15}} type="text" name="name" id="" placeholder="Name..." />
                   <Input style={{height: 45, marginBottom: 15}} type="text" name="desc" id="" placeholder="Description..." />
                   <Input style={{height: 45, marginBottom: 15, paddingTop: 9}} type="file" name="images" />
-                  <Button type="submit" onClick={handleClose}>Add</Button>
+                  <Button variant="outlined" type="submit" onClick={handleClose}>Add</Button>
                 </form>
               </Typography>
             </Box>
@@ -418,6 +421,7 @@ function Todo() {
                   onClick={() => {
                     setOpen2(false), putUser(idx);
                   }}
+                  variant="outlined"
                 >
                   Edit
                 </Button>

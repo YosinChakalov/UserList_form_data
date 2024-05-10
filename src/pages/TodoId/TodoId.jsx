@@ -19,15 +19,16 @@ const TodoId = () => {
     },[])
 
   return (
-    <div>
-        <h1>{id}</h1>
+    <div className='flex justify-center items-center h-[600px]'>
+        <div className='m-auto border-2 p-[25px] rounded-[10px] shadow-xl'>
         {data.images?.map((el)=> {
             return (
             <img key={el.id} src={"http://65.108.148.136:8080/images/" + el.imageName} className='w-[280px]' />
             )
         })}
-        <h1 className='text-[50px]'>{data.name}</h1>
-        <h1 className='text-[50px]'>{data.description}</h1>
+        <h1 className='text-[30px] my-[20px]'> Name: {data.name}</h1>
+        <h1 className='text-[20px]'> Desciption: {data.description}</h1>
+        </div>
     </div>
   )
 }
